@@ -34,6 +34,52 @@ print (call3 (compute, 5,4, op=sub))
 
 #Exercice 4 : 
 
+from time import sleep
 
+def delay (f):
+    def wrapper (*args):
+        sleep (0.1)
+        f(*args)
+    return wrapper
 
+@delay
+def printnum (i):
+    print (i)
 
+counter = 3
+while counter >=0:
+    printnum (counter)
+    counter-=1
+print ("KA-BOOM!")
+
+#Exercice 5:
+
+def delay2 (delayTime):
+    def decorator (f):
+        def wrapper (*args):
+            sleep (delayTime)
+            f (*args)
+        return wrapper  
+    return decorator
+
+@delay2 (0.1)
+def printnum2 (i):
+    print (i)
+
+cnt = 15
+while cnt >=0:
+    printnum2 (cnt)
+    cnt -=5
+print ('KA-BOOM!')
+
+#Exercice 6 :
+
+def binrep (number):
+    pass
+
+b = binrep (12)
+while True :
+    try : 
+        print (next (b))
+    except StopIteration:
+        break
